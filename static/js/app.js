@@ -112,10 +112,11 @@ d3.json(url).then(function(result) {
     
       Plotly.newPlot("bubble", data, layout);
 
-    let metadataDiv = d3.select("#sample-metadata");
-    let alldata = result.metadata;
-    let selectedMetadata = alldata.filter(metadata => metadata.id === metadata_id);
-    Object.entries(selectedMetadata).forEach(([key, value]) => {
+     let metadataDiv = d3.select("#sample-metadata");
+     metadataDiv.html("");
+     let alldata = result.metadata;
+     let selectedMetadata = alldata.filter(metadata => metadata.id == sample_id)[0];
+     Object.entries(selectedMetadata).forEach(([key, value]) => {
        metadataDiv.append("p").text(`${key}: ${value}`);
       });
 
